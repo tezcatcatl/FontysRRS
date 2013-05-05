@@ -19,7 +19,7 @@ namespace FontysRoomReservationSystem.Controllers
     {
         //
         // GET: /Account/Login
-        //TRY GIT MODAFOKARS
+        //YARRAH
 
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
