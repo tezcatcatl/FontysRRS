@@ -19,7 +19,7 @@ namespace FontysRoomReservationSystem.Controllers
     {
         //
         // GET: /Account/Login
-        //YARRAH
+        //YARRAH Cat food
 
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
