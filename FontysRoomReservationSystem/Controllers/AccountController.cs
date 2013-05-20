@@ -31,9 +31,9 @@ namespace FontysRoomReservationSystem.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(LoginModel model, string returnUrl)
+        public ActionResult Login(LandingViewModel model, string returnUrl)
         {
-            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            if (ModelState.IsValid && WebSecurity.Login(model.LoginModel.UserName, model.LoginModel.Password, persistCookie: model.LoginModel.RememberMe))
             {
                 return RedirectToLocal(returnUrl);
             }
@@ -69,15 +69,20 @@ namespace FontysRoomReservationSystem.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterModel model)
+        public ActionResult Register(LandingViewModel model)
         {
             if (ModelState.IsValid)
             {
                 // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
-                    WebSecurity.Login(model.UserName, model.Password);
+                    WebSecurity.CreateUserAndAccount(model.LoginModel.UserName, model.LoginModel.Password);
+                    WebSecurity.Login(model.LoginModel.UserName, model.LoginModel.Password);
+                    model.UserProfile.UserName = model.LoginModel.UserName;
+                    var registerContext = new UsersContext();
+                    registerContext.UserProfiles.Add(model.UserProfile);
+                    registerContext.SaveChanges();
+
                     return RedirectToAction("Index", "Home");
                 }
                 catch (MembershipCreateUserException e)

@@ -1,46 +1,176 @@
-﻿@model FontysRoomReservationSystem.Models.LoginModel
-
+﻿@model FontysRoomReservationSystem.Models.LandingViewModel
 @{
     ViewBag.Title = "Log in";
 }
+<table id="__01" width="1500" height="1001" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td colspan="11">
+            <img src="../../Images/Login/login_01.jpg" width="1500" height="185" alt=""/>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="19">
+            <img src="../../Images/Login/login_02.jpg" width="522" height="815" alt=""/>
+        </td>
+        <td colspan="8">
+            <img src="../../Images/Login/login_03.jpg" width="472" height="1" alt=""/>
+        </td>
+        <td colspan="2" rowspan="9">
+            <img src="../../Images/Login/login_04.jpg" width="506" height="393" alt=""/>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="8">
+            <img src="../../Images/Login/login_05.jpg" width="472" height="161" alt=""/>
+        </td>
+    </tr>
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-</hgroup>
-
-<section id="loginForm">
-<h2>Use a local account to log in.</h2>
-@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+            @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+            {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
-    <fieldset>
-        <legend>Log in Form</legend>
-        <ol>
-            <li>
-                @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
-                @Html.ValidationMessageFor(m => m.UserName)
-            </li>
-            <li>
-                @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(m => m.Password)
-            </li>
-            <li>
-                @Html.CheckBoxFor(m => m.RememberMe)
+            <tr>
+		<td colspan="4" rowspan="3">
+			<img src="../../Images/Login/login_06.jpg" width="46" height="120" alt=""/></td>
+            <td colspan="3">
+             @Html.TextBoxFor(m => m.LoginModel.UserName, new {placeholder = "User Name", width = "388", height = "52", tooltip = "Enter your PCN" })
+             @Html.ValidationMessageFor(m => m.LoginModel.UserName)
+            </td>
+		<td rowspan="6">
+			<img src="../../Images/Login/login_08.jpg" width="38" height="215" alt=""/></td>
+	</tr>
+
+    <tr>
+		<td colspan="3">
+			<img src="../../Images/Login/login_09.jpg" width="388" height="16" alt=""/></td>
+	</tr>
+	<tr>
+		<td colspan="3">
+             @Html.PasswordFor(m => m.LoginModel.Password, new {placeholder = "Password", width = "388", height = "52", tooltip = "Enter your Password" })
+              @Html.ValidationMessageFor(m => m.LoginModel.Password)
+                </td>
+	</tr>
+     
+    <tr>
+		<td colspan="3" rowspan="3">
+			<img src="../../Images/Login/login_11.jpg" width="44" height="95" alt=""/></td>
+		<td colspan="4">
+			<img src="../../Images/Login/login_12.jpg" width="390" height="13" alt=""/></td>
+	</tr>
+	<tr>
+		<td rowspan="2">
+			<img src="../../Images/Login/login_13.jpg" width="2" height="82" alt=""/></td>
+		<td colspan="3">
+             <input type="submit" value="Log In" width="388" height="53" alt=""/>
+             </td>
+	</tr>
+            }  
+    
+    @using (Html.BeginForm(new{ returnUrl = Url.Action("Account", "Register")}))
+    {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+         <tr>
+		<td colspan="3">
+			<img src="../../Images/Login/login_15.jpg" width="388" height="29" alt=""/></td>
+	</tr>
+	<tr>
+		<td colspan="8">
+			<img src="../../Images/Login/login_16.jpg" width="472" height="16" alt=""/></td>
+	</tr>
+	<tr>
+		<td colspan="9">
+			<img src="../../Images/Login/login_17.jpg" width="473" height="72" alt=""/></td>
+		<td rowspan="10">
+			<img src="../../Images/Login/login_18.jpg" width="505" height="422" alt=""/></td>
+	</tr>
+                
+                <tr>
+		<td rowspan="8">
+			<img src="../../Images/Login/login_19.jpg" width="42" height="281" alt=""/></td>
+		<td colspan="2" rowspan="5">
+			<img src="../../Images/Login/login_20.jpg" width="2" height="187" alt=""/></td>
+		<td colspan="2">
+			@Html.TextBoxFor(m => m.UserProfile.FirstName, new { placeholder = "First Name", width = "188", height = "52", alt = "" })</td>
+		<td>
+			<img src="../../Images/Login/login_22.jpg" width="16" height="52" alt=""/></td>
+		<td>
+            @Html.TextBoxFor(m => m.UserProfile.LastName, new { placeholder = "Last Name", width = "188", height = "52", alt = "" })</td>
+		<td colspan="2" rowspan="8">
+			<img src="../../Images/Login/login_24.jpg" width="39" height="281" alt=""/></td>
+	</tr>
+
+                <tr>
+		<td colspan="4">
+			<img src="../../Images/Login/login_25.jpg" width="390" height="15" alt=""/></td>
+	</tr>
+	<tr>
+		<td rowspan="3">
+			<img src="../../Images/Login/login_26.jpg" width="2" height="120" alt=""/></td>
+		<td colspan="3">
+            @Html.TextBoxFor(m => m.LoginModel.UserName, new { placeholder = "User Name", width = "388", height = "52", tooltip = "Enter your PCN" })</td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<img src="../../Images/Login/login_28.jpg" width="388" height="16" alt=""/></td>
+	</tr>
+	<tr>
+		<td colspan="3">
+             @Html.PasswordFor(m => m.LoginModel.ConfirmPassword, new { placeholder = "Confirm Password", width = "388", height = "52", tooltip = "Enter your Password" })</td>
+	</tr>
+	<tr>
+		<td rowspan="2">
+			<img src="../../Images/Login/login_30.jpg" width="1" height="68" alt=""/></td>
+		<td colspan="5">
+			<img src="../../Images/Login/login_31.jpg" width="391" height="15" alt=""/></td>
+	</tr>
+	<tr>
+		<td colspan="5">
+            <input type="submit" value="Register" width="391" height="53" alt=""/>
+            </td>
+	</tr>
+	<tr>
+		<td colspan="6">
+			<img src="../../Images/Login/login_33.jpg" width="392" height="26" alt=""/></td>
+	</tr>
+	<tr>
+		<td colspan="9">
+			<img src="../../Images/Login/login_34.jpg" width="473" height="69" alt=""/></td>
+	</tr>    
+    }
+	<tr>
+		<td>
+			<img src="../../Images/Login/empty.gif" width="522" height="1" alt=""/></td>
+		<td>
+			<img src="../../Images/Login/empty.gif" width="42" height="1" alt=""/></td>
+		<td>
+			<img src="../../Images/Login/empty.gif" width="1" height="1" alt=""/></td>
+		<td>
+			<img src="../../Images/Login/empty.gif" width="1" height="1" alt=""/></td>
+		<td>
+			<img src="../../Images/Login/empty.gif" width="2" height="1" alt=""/></td>
+		<td>
+			<img src="../../Images/Login/empty.gif" width="184" height="1" alt=""/></td>
+		<td>
+			<img src="../../Images/Login/empty.gif" width="16" height="1" alt=""/></td>
+		<td>
+			<img src="../../Images/Login/empty.gif" width="188" height="1" alt=""/></td>
+		<td>
+			<img src="../../Images/Login/empty.gif" width="38" height="1" alt=""/></td>
+		<td>
+			<img src="../../Images/Login/empty.gif" width="1" height="1" alt=""/></td>
+		<td>
+			<img src="../../Images/Login/empty.gif" width="505" height="1" alt=""/></td>
+	</tr>
+
+      @*          @Html.CheckBoxFor(m => m.RememberMe)
                 @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
-            </li>
-        </ol>
-        <input type="submit" value="Log in" />
-    </fieldset>
-    <p>
-        @Html.ActionLink("Register", "Register") if you don't have an account.
-    </p>
-}
-</section>
+      *@
+
+</table>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
-
